@@ -1,0 +1,17 @@
+body {
+  background: linear-gradient(135deg, #0f172a, #2563eb);
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card {
+  width: 400px;
+  border-radius: 15px;
+}
