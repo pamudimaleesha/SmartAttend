@@ -1,8 +1,9 @@
 import axios from "axios";
+import { FaQrcode } from "react-icons/fa";
 import "../styles/Login.css";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import bgImage from "../assets/images/attendance-bg.jpg";
 function Login() {
 
   const navigate = useNavigate();
@@ -40,22 +41,24 @@ console.log(response.data);
 
       if(userType === "student"){
 
-        localStorage.setItem(
-          "student",
-          JSON.stringify(response.data.student)
-        );
+       localStorage.clear();
+
+localStorage.setItem(
+ "student",
+ JSON.stringify(response.data.student)
+);
 
         navigate("/student");
 
       } 
       else {
 
-        localStorage.setItem(
-          "lecturer",
-          JSON.stringify(response.data.lecturer)
-        );
+       localStorage.clear();
 
-        navigate("/lecturer");
+localStorage.setItem(
+ "lecturer",
+ JSON.stringify(response.data.lecturer)
+);
 
       }
 
@@ -70,76 +73,96 @@ console.log(response.data);
 
 
   return (
-    <div className="login-container">
+<div 
+ className="login-container"
+ style={{
+   backgroundImage: `
+   linear-gradient(
+     rgba(0,0,0,0.45),
+     rgba(0,0,0,0.45)
+   ),
+   url(${bgImage})
+   `
+ }}
+>
 
-      <div className="card login-card p-4 shadow">
-
-        <h2 className="text-primary text-center">
-          SmartAttend
-        </h2>
-
-        <p className="text-center">
-          Login Page
-        </p>
-
-
-        <input
-          type="text"
-          className="form-control mb-3"
-          placeholder="Email"
-          onChange={(e)=>setEmail(e.target.value)}
-        />
+<div className="circle circle1"></div>
+<div className="circle circle2"></div>
 
 
-        <input
-          type="password"
-          className="form-control mb-3"
-          placeholder="Password"
-          onChange={(e)=>setPassword(e.target.value)}
-        />
+<div className="login-card">
 
 
-        <select
-          className="form-select mb-3"
-          value={userType}
-          onChange={(e)=>setUserType(e.target.value)}
-        >
+<div className="logo-section">
 
-          <option value="student">
-            Student
-          </option>
+<FaQrcode className="qr-icon"/>
 
-          <option value="lecturer">
-            Lecturer
-          </option>
+<h1>
+SmartAttend
+</h1>
 
-        </select>
+<p>
+Smart QR Attendance Management System
+</p>
+
+</div>
 
 
-        <button
-          className="btn btn-primary w-100"
-          onClick={handleLogin}
-        >
-          Login
-        </button>
-<p className="text-center mt-3">
+
+<input
+type="text"
+placeholder="Email"
+onChange={(e)=>setEmail(e.target.value)}
+/>
+
+
+
+<input
+type="password"
+placeholder="Password"
+onChange={(e)=>setPassword(e.target.value)}
+/>
+
+
+
+<select
+value={userType}
+onChange={(e)=>setUserType(e.target.value)}
+>
+
+<option value="student">
+Student
+</option>
+
+<option value="lecturer">
+Lecturer
+</option>
+
+</select>
+
+
+
+<button onClick={handleLogin}>
+Login
+</button>
+
+
+
+<p className="signup-text">
 
 Don't have an account?
 
-<span
-style={{cursor:"pointer", color:"blue"}}
-onClick={()=>navigate("/register")}
->
+<span onClick={()=>navigate("/register")}>
  Sign Up
 </span>
 
 </p>
 
-      </div>
 
-    </div>
-  );
+</div>
 
+</div>
+);
 }
 
 export default Login;

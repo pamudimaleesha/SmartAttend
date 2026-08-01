@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Navbar from "../components/Navbar";
-
+import "../styles/LecturerDashboard.css";
 function LecturerDashboard() {
 
   const [qr, setQr] = useState("");
@@ -53,100 +53,109 @@ function LecturerDashboard() {
     <>
       <Navbar />
 
-      <div className="container mt-4">
+      <div className="lecturer-container">
 
         <h2>
           Welcome Lecturer 👨‍🏫
         </h2>
 
 
-        <div className="card shadow p-4 mt-4 text-center">
+        <div className="dashboard-card qr-section">
 
-          <h4>
-            Generate Attendance QR
-          </h4>
-
-
-          <button
-            className="btn btn-success mb-3"
-            onClick={generateQR}
-          >
-            Generate Attendance QR
-          </button>
+<h3>
+📱 Generate Attendance QR
+</h3>
 
 
-          {
-            qr && (
-              <img
-                src={qr}
-                alt="QR"
-                width="250"
-              />
-            )
-          }
-
-        </div>
+<button
+className="generate-btn"
+onClick={generateQR}
+>
+Generate QR
+</button>
 
 
+{
+qr && (
 
-        <div className="card shadow p-4 mt-4">
+<div className="qr-box">
 
-          <h4>
-            Attendance List
-          </h4>
+<img
+src={qr}
+alt="QR Code"
+/>
+
+</div>
+
+)
+}
 
 
-          <button
-            className="btn btn-primary mb-3"
-            onClick={getAttendance}
-          >
-            View Attendance
-          </button>
+</div>
 
 
 
-          <table className="table table-bordered">
+        <div className="dashboard-card attendance-section">
 
-            <thead>
-
-              <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Subject</th>
-                <th>Time</th>
-              </tr>
-
-            </thead>
+<h3>
+📋 Attendance Records
+</h3>
 
 
-            <tbody>
-
-            {
-              attendance.map((item,index)=>(
-
-                <tr key={index}>
-
-                  <td>{item.name}</td>
-
-                  <td>{item.email}</td>
-
-                  <td>{item.subject_name}</td>
-
-                  <td>{item.attendance_time}</td>
-
-                </tr>
-
-              ))
-            }
-
-            </tbody>
+<button
+className="view-btn"
+onClick={getAttendance}
+>
+View Attendance
+</button>
 
 
-          </table>
+<div className="table-responsive">
+
+<table className="attendance-table">
+
+<thead>
+
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Subject</th>
+<th>Time</th>
+</tr>
+
+</thead>
 
 
-        </div>
+<tbody>
 
+{
+attendance.map((item,index)=>(
+
+<tr key={index}>
+
+<td>{item.name}</td>
+
+<td>{item.email}</td>
+
+<td>{item.subject_name}</td>
+
+<td>{item.attendance_time}</td>
+
+
+</tr>
+
+))
+}
+
+</tbody>
+
+
+</table>
+
+</div>
+
+
+</div>
 
       </div>
 

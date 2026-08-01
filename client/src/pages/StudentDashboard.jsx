@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-
+import "../styles/StudentDashboard.css";
 function StudentDashboard() {
 
     const navigate = useNavigate();
@@ -54,118 +54,136 @@ const [attendance, setAttendance] = useState([]);
     };
 
 
-    return (
-        <>
-
-        <Navbar />
-
-        <div className="container mt-4">
-
-            <h2>
-                Welcome Student 👋
-            </h2>
+   return (
+<>
+<Navbar />
 
 
-            {
-                student && (
-                    <div className="card shadow p-3 mt-3">
-
-                        <h4>
-                            {student.name}
-                        </h4>
-
-                        <p>
-                            Email: {student.email}
-                        </p>
-
-                    </div>
-                )
-            }
+<div className="student-container">
 
 
-            <div className="row mt-4">
-
-
-                <div className="col-md-4">
-
-                    <div className="card shadow p-3">
-
-                        <h5>
-                            Today's Class
-                        </h5>
-
-                        <p>
-                            Software Engineering
-                        </p>
-
-                    </div>
-
-                </div>
+<h2>
+Welcome Student 👋
+</h2>
 
 
 
-                <div className="col-md-4">
+{
+student && (
 
-                    <div className="card shadow p-3">
+<div className="student-profile">
 
-                        <h5>
-                            Attendance
-                        </h5>
+<h3>
+{student.name}
+</h3>
 
-                       <p>
-    Classes Attended: {attendance.length}
+<p>
+📧 {student.email}
 </p>
 
 <p>
-    Attendance: 
-    {
-        attendance.length > 0 ? "100%" : "0%"
-    }
+🎓 Student ID : {student.student_id}
 </p>
 
-                    </div>
 
-                </div>
+</div>
 
+)
 
-
-                <div className="col-md-4">
-
-                    <div className="card shadow p-3">
-
-                        <h5>
-                            QR Scanner
-                        </h5>
+}
 
 
-                        <button
-                        className="btn btn-success"
-                        onClick={()=>navigate("/scanner")}
-                        >
-                            Scan QR 📷
-                        </button>
 
 
-                    </div>
-
-                </div>
+<div className="dashboard-cards">
 
 
-            </div>
+
+<div className="student-card">
+
+<h4>
+📚 Today's Class
+</h4>
 
 
-            <button
-            className="btn btn-danger mt-4"
-            onClick={logout}
-            >
-                Logout
-            </button>
+<p>
+Software Engineering
+</p>
 
 
-        </div>
+<p>
+Time : 10.00 AM
+</p>
 
-        </>
-    );
+
+</div>
+
+
+
+
+
+
+<div className="student-card">
+
+
+<h4>
+📊 Attendance
+</h4>
+
+
+<h1>
+{
+attendance.length > 0 
+? "100%" 
+: "0%"
+}
+</h1>
+
+
+<p>
+Classes Attended :
+{attendance.length}
+</p>
+
+
+</div>
+
+
+
+
+
+
+
+<div className="student-card">
+
+
+<h4>
+📷 QR Attendance
+</h4>
+
+
+<button
+className="scan-btn"
+onClick={()=>navigate("/scanner")}
+>
+
+Scan QR Code
+
+</button>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+</>
+);
 
 }
 

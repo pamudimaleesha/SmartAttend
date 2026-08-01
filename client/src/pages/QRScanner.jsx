@@ -2,7 +2,7 @@ import Navbar from "../components/Navbar";
 import { Html5QrcodeScanner } from "html5-qrcode";
 import { useEffect } from "react";
 import axios from "axios";
-
+import "../styles/QRScanner.css";
 function QRScanner() {
 
 
@@ -92,27 +92,49 @@ function QRScanner() {
 
   return (
 
-    <>
+<>
 
-    <Navbar />
-
-    <div className="container mt-4 text-center">
+<Navbar />
 
 
-      <h2>
-        Scan Attendance QR 📷
-      </h2>
+<div className="scanner-container">
 
 
-      <div id="reader"></div>
+<div className="scanner-card">
 
 
-    </div>
+<h1>
+SmartAttend
+</h1>
 
 
-    </>
+<p>
+Scan Attendance QR Code 📷
+</p>
 
-  );
+
+
+<div id="reader"></div>
+
+
+
+<button
+className="back-btn"
+onClick={()=>window.history.back()}
+>
+Back
+</button>
+
+
+</div>
+
+
+</div>
+
+
+</>
+
+);
 
 }
 
