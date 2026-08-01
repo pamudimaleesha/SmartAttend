@@ -107,7 +107,19 @@ DB_NAME=smartattend
 
 ## 📸 Screenshots
 
-(Add your project screenshots here)
+
+### 🔐 Login Page
+![Login Page](screenshots/login.png)
+
+### 👨‍🎓 Student Dashboard
+![Student Dashboard](screenshots/student-dashboard.png)
+
+### 👨‍🏫 Lecturer Dashboard
+![Lecturer Dashboard](screenshots/lecturer-dashboard.png)
+![Generate QR ](screenshots/qr-scanner.png)
+
+### 📷 QR Scanner
+![QR Scanner](screenshots/scanQR.png)
 
 ---
 
